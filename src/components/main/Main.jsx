@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { assets } from "../../assets/assets";
 import "./main.css";
 import { Context } from "../../context/Context";
+import ThemeToggleButton from "../ThemeToggleButton";
 const Main = () => {
   const {
     onSent,
@@ -11,17 +12,24 @@ const Main = () => {
     resultData,
     setInput,
     input,
+    theme,
+    toggleTheme,
   } = useContext(Context);
 
   const handleCardClick = (promptText) => {
     setInput(promptText);
   };
+
   return (
     <div className="main">
       <div className="nav">
         <p>Gemini</p>
-        <img src={assets.user} alt="" />
+        <div className="nav-right">
+          <ThemeToggleButton />
+          <img src={assets.user} alt="" />
+        </div>
       </div>
+
       <div className="main-container">
         {!showResults ? (
           <>
@@ -116,13 +124,15 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} alt="" />
               <img src={assets.mic_icon} alt="" />
-              <img
-                src={assets.send_icon}
-                alt=""
-                onClick={() => {
-                  onSent();
-                }}
-              />
+              {input ? (
+                <img
+                  src={assets.send_icon}
+                  alt=""
+                  onClick={() => {
+                    onSent();
+                  }}
+                />
+              ) : null}
             </div>
           </div>
           <div className="bottom-info">

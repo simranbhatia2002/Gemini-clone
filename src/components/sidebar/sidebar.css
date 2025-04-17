@@ -1,70 +1,97 @@
 .sidebar {
-	min-height: 100vh;
-	display: inline-flex;
-	flex-direction: column;
-	justify-content: space-between;
-	background-color: #f0f4f9;
-	padding: 10px 15px;
-   
+  min-height: 100vh;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f0f4f9;
+  padding: 10px 15px;
 }
-.sidebar .top{
-    margin-top: 15px;
+
+/* Light Theme */
+.sidebar.light {
+  background-color: #f0f4f9;
+  color: #282828;
+}
+.sidebar.light .new-chat {
+  background-color: #e6eaf1;
+  color: grey;
+}
+.sidebar.light .recent-entry:hover {
+  background-color: #e2e6eb;
+}
+
+/* Dark Theme */
+.sidebar.dark {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+.sidebar.dark .new-chat {
+  background-color: #2c2c2c;
+  color: #ccc;
+}
+.sidebar.dark .recent-entry {
+  color: #e0e0e0;
+}
+.sidebar.dark .recent-entry:hover {
+  background-color: #333;
+}
+
+.sidebar .top {
+  margin-top: 15px;
 }
 .sidebar img {
-	width: 30px;
+  width: 30px;
 }
 .sidebar .menu {
-	display: block;
-	margin-left: 10px;
-	cursor: pointer;
+  display: block;
+  margin-left: 10px;
+  cursor: pointer;
 }
-.sidebar .new-chat{
- margin-top: 50px;
- display: inline-flex;
- align-items: center;
- gap: 10px;
- padding: 10px 15px;
- background-color: #e6eaf1;
- border-radius: 50px;
- font-size: 14px;
- color: grey;
- cursor: pointer;
+.sidebar .new-chat {
+  margin-top: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: #e6eaf1;
+  border-radius: 50px;
+  font-size: 14px;
+  color: grey;
+  cursor: pointer;
 }
-.sidebar .recent{
-    display: flex;
-    flex-direction: column;
-    animation: fadeIn 2.0s;
+.sidebar .recent {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 2s;
 }
-.sidebar .recent-title{
-    margin-top: 30px;
-    margin-bottom: 20px;
-
+.sidebar .recent-title {
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
-.sidebar .recent-entry{
-    display: flex;
-    align-items: start;
-    gap: 10px;
-    padding: 10px;
-    padding-right: 40px;
-    border-radius: 50px;
-    color: #282828;
-    cursor: pointer;
-
+.sidebar .recent-entry {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  padding: 10px;
+  padding-right: 40px;
+  border-radius: 50px;
+  color: #282828;
+  cursor: pointer;
 }
-.sidebar .recent-entry:hover{
-    background-color: #e2e6eb;
+.sidebar .recent-entry:hover {
+  background-color: #e2e6eb;
 }
-.sidebar .bottom{
-    display: flex;
-    flex-direction: column;
+.sidebar .bottom {
+  display: flex;
+  flex-direction: column;
 }
-.sidebar .bottom-item{
-    padding-right: 10px;
-    cursor: pointer;
+.sidebar .bottom-item {
+  padding-right: 10px;
+  cursor: pointer;
 }
 
-@media (max-width:600px){
-    .sidebar{
-        display: none;
-    }
+@media (max-width: 600px) {
+  .sidebar {
+    display: none;
+  }
 }

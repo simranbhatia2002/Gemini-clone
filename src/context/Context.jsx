@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import runChat from "../config/Gemini";
 
 export const Context = createContext();
@@ -10,6 +10,7 @@ const ContextProvider = (props) => {
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
+  const [theme, setTheme] = useState("light");
 
   const delayPara = (index, nextWord) => {
     setTimeout(function () {
@@ -42,7 +43,7 @@ const ContextProvider = (props) => {
         throw new Error("Invalid response from API");
       }
 
-      // ✅ Format response properly
+      // Format response properly
       response = response
         .replace(/\n/g, "<br/>") // Convert new lines to <br/>
         .replace(/\*\*(.*?)\*\*/g, "<b>$1</b>") // Convert **text** to <b>text</b>
@@ -57,6 +58,18 @@ const ContextProvider = (props) => {
       setInput("");
     }
   };
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) setTheme(saved);
+  }, []);
 
   const contextValue = {
     prevPrompts,
@@ -70,6 +83,8 @@ const ContextProvider = (props) => {
     loading,
     resultData,
     newChat,
+    theme,
+    toggleTheme,
   };
 
   return (
